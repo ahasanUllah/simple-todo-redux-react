@@ -1,4 +1,4 @@
-import { ADDED, ALLCOMPLETED, CLEARCOMPLETED, COLORSELECTED, DELETED, TOGGLED } from './actionType';
+import { ADDED, ALLCOMPLETED, CLEARCOMPLETED, COLORSELECTED, DELETED, TOGGLED } from '../Todos/actionTypes';
 
 export const added = (todoText) => {
    return {
@@ -37,7 +37,7 @@ export const allCompleted = () => {
    };
 };
 
-export const allClear = () => {
+export const clearCompleted = () => {
    return {
       type: CLEARCOMPLETED,
    };

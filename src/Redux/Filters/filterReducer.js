@@ -1,5 +1,5 @@
-import { COLORCHANGED, STATUSCHANGED } from './actionTypes';
-import initialState from './initialState';
+import { COLORCHANGED, STATUSCHANGED } from '../Filters/actionTypes';
+import initialState from '../Filters/initialState';
 
 const filterReducer = (state = initialState, action) => {
    switch (action.type) {
@@ -9,17 +9,17 @@ const filterReducer = (state = initialState, action) => {
             status: action.payload,
          };
       case COLORCHANGED:
-         const { colors, changeType } = action.payload;
-         switch (changeType) {
+         const { color, changedType } = action.payload;
+         switch (changedType) {
             case 'added':
                return {
                   ...state,
-                  colors: [...state.colors, colors],
+                  colors: [...state.colors, color],
                };
             case 'removed':
                return {
                   ...state,
-                  colors: state.colors.filter((existingColor) => existingColor !== colors),
+                  colors: state.colors.filter((existingColor) => existingColor !== color),
                };
 
             default:
