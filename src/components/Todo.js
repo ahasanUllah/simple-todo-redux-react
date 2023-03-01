@@ -2,25 +2,28 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import cancelImage from '../Assets/images/cancel.png';
 import { colorSelected, deleted, toggled } from '../Redux/Todos/actions';
+import deleteTodo from '../Redux/Todos/thunk/deleteTodo';
+import updateColor from '../Redux/Todos/thunk/updateColor';
+import updateStatus from '../Redux/Todos/thunk/updateStatus';
 
 const Todo = ({ todo }) => {
    const dispatch = useDispatch();
    const { text, id, completed, color } = todo;
    const handleStatusChange = (id) => {
-      dispatch(toggled(id));
+      dispatch(updateStatus(id, completed));
    };
 
    const handleColorChange = (todoId, color) => {
-      dispatch(colorSelected(todoId, color));
+      dispatch(updateColor(todoId, color));
    };
 
    const handleDelete = (todoId) => {
-      dispatch(deleted(todoId));
+      dispatch(deleteTodo(todoId));
    };
    return (
       <div className="flex justify-start items-center p-2 hover:bg-gray-100 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0">
          <div
-            className={`rounded-full bg-white border-2 border-gray-400 w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 ${
+            className={`relative rounded-full bg-white border-2 border-gray-400 w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 ${
                completed && 'border-green-500 focus-within:border-green-500'
             }`}
          >

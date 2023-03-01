@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import doubleTick from '../Assets/images/double-tick.png';
 import noteImage from '../Assets/images/notes.png';
 import plusImage from '../Assets/images/plus.png';
-import { added, allCompleted, clearCompleted } from '../Redux/Todos/actions';
+import { allCompleted, clearCompleted } from '../Redux/Todos/actions';
+import addTodo from '../Redux/Todos/thunk/addTodo';
 
 const Header = () => {
    const [input, setInput] = useState('');
@@ -15,7 +16,7 @@ const Header = () => {
 
    const handleSbumit = (e) => {
       e.preventDefault();
-      dispatch(added(input));
+      dispatch(addTodo(input));
 
       setInput('');
    };

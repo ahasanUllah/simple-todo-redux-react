@@ -1,5 +1,5 @@
 import { initialState } from './initialState';
-import { ADDED, ALLCOMPLETED, CLEARCOMPLETED, COLORSELECTED, DELETED, TOGGLED } from './actionTypes';
+import { ADDED, ALLCOMPLETED, CLEARCOMPLETED, COLORSELECTED, DELETED, LOADED, TOGGLED } from './actionTypes';
 
 const getTodoId = (todos) => {
    const maxId = todos.reduce((maxId, todo) => Math.max(maxId, todo.id), -1);
@@ -9,6 +9,8 @@ const getTodoId = (todos) => {
 
 const todoReducer = (state = initialState, action) => {
    switch (action.type) {
+      case LOADED:
+         return action.payload;
       case ADDED:
          return [
             ...state,
